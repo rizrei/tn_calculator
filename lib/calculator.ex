@@ -15,12 +15,9 @@ defmodule Calculator do
   @spec add(n1 :: number() | String.t(), n2 :: number() | String.t()) ::
           number() | {:error, String.t()}
   def add(n1, n2) do
-    with(
-      {:ok, normalized_n1} <- Parser.parse(n1),
-      {:ok, normalized_n2} <- Parser.parse(n2),
-      {:ok, result} <- Parser.parse(normalized_n1 + normalized_n2)
-    ) do
-      {:ok, result}
+    with {:ok, normalized_n1} <- Parser.parse(n1),
+         {:ok, normalized_n2} <- Parser.parse(n2) do
+      Parser.parse(normalized_n1 + normalized_n2)
     else
       {:error, message} -> {:error, message}
     end
@@ -36,12 +33,9 @@ defmodule Calculator do
   @spec sub(n1 :: number() | String.t(), n2 :: number() | String.t()) ::
           number() | {:error, String.t()}
   def sub(n1, n2) do
-    with(
-      {:ok, normalized_n1} <- Parser.parse(n1),
-      {:ok, normalized_n2} <- Parser.parse(n2),
-      {:ok, result} <- Parser.parse(normalized_n1 - normalized_n2)
-    ) do
-      {:ok, result}
+    with {:ok, normalized_n1} <- Parser.parse(n1),
+         {:ok, normalized_n2} <- Parser.parse(n2) do
+      Parser.parse(normalized_n1 - normalized_n2)
     else
       {:error, message} -> {:error, message}
     end
@@ -57,12 +51,9 @@ defmodule Calculator do
   @spec mult(n1 :: number() | String.t(), n2 :: number() | String.t()) ::
           number() | {:error, String.t()}
   def mult(n1, n2) do
-    with(
-      {:ok, normalized_n1} <- Parser.parse(n1),
-      {:ok, normalized_n2} <- Parser.parse(n2),
-      {:ok, result} <- Parser.parse(normalized_n1 * normalized_n2)
-    ) do
-      {:ok, result}
+    with {:ok, normalized_n1} <- Parser.parse(n1),
+         {:ok, normalized_n2} <- Parser.parse(n2) do
+      Parser.parse(normalized_n1 * normalized_n2)
     else
       {:error, message} -> {:error, message}
     end
